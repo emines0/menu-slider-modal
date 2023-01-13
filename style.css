@@ -15,6 +15,12 @@ body {
   font-family: 'Lato', sans-serif;
   margin: 0;
   min-height: 100vh;
+  transition: transform 0.3s ease;
+}
+
+body.show-nav {
+  /* widh of nav */
+  transform: translate(300px);
 }
 
 nav {
@@ -24,7 +30,7 @@ nav {
   position: fixed;
   top: 0;
   left:0;
-  width: 200px;
+  width: 300px;
   height: 100vh;
   z-index: 100;
   transform: translateX(-100%);
@@ -124,6 +130,10 @@ button:focus {
   bottom: 0;
 }
 
+.modal-container.show-modal {
+  display: block;
+}
+
 .modal {
   background-color: #fff;
   border-radius: 5px;
@@ -132,9 +142,11 @@ button:focus {
   overflow: hidden;
   top: 50%;
   left: 50%;
-  /* transform: translate(-50%, -50%); put the box right in the middle of the screen */
+  transform: translate(-50%, -50%); /*put the box right in the middle of the screen */
   max-width: 100%;
   width: 400px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
 }
 
 .modal-header {
@@ -175,4 +187,14 @@ button:focus {
   top: 0;
   right: 0;
   cursor: pointer;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
